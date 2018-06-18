@@ -126,10 +126,6 @@ def extract_time(sentence):
 	time_of_action = indicator_time + ' ' + time_number + ' ' + min_hr_sec
 	return time_of_action
 
-lines = input("enter the query")
-
-action = extract_verb(lines)
-object = extract_noun(lines)
 
 #check if time is present in the query
 def check_time_exist(sentence):
@@ -150,17 +146,23 @@ def check_person_exist(sentence):
 	else:
 		return False
 
-print("----------------output------------------")
 
-if check_person_exist(lines):
-	person = extract_name(lines)
-	print("person - ", person)
-if check_time_exist(lines):
-	time = extract_time(lines)
-	print("time - ", time)
+def main(lines):
+	action = extract_verb(lines)
+	object = extract_noun(lines)
 	
-task = action[0]
-
-print("action performed  - ", task)
-print("action performed on - ", object)
-
+	if check_person_exist(lines):
+		person = extract_name(lines)
+		
+	if check_time_exist(lines):
+		time = extract_time(lines)
+		print("time - ", time)
+		
+	task = action[0]
+	
+	tasks = {
+		'PERSON' : person,
+		'TIME' : time,
+		'ACTION' : task,
+		'OBJECT' : object
+	}
