@@ -147,7 +147,7 @@ def check_person_exist(sentence):
 		return False
 
 
-def main(lines):
+def hold_the_door(lines):
 	action = extract_verb(lines)
 	object = extract_noun(lines)
 	
@@ -166,3 +166,5 @@ def main(lines):
 		'ACTION' : task,
 		'OBJECT' : object
 	}
+	
+	return tasks
